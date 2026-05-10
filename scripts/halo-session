@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Halo DE Session Launcher
+# This script is executed by the Display Manager (GDM, SDDM, LightDM)
+
+# Set up essential Wayland environment variables
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Halo
+export XDG_SESSION_DESKTOP=Halo
+
+# Optional: Set scaling, Qt/GTK Wayland forcing, etc.
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland;xcb"
+export GDK_BACKEND="wayland,x11"
+
+# Launch the compositor
+# (In the future, this will point to the compiled C binary)
+exec halo-wm "$@"

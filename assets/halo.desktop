@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Halo
+Comment=A modern, modular Wayland compositor
+Exec=halo-session
+Type=Application
+DesktopNames=Halo

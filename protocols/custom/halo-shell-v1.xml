@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="halo_shell_v1">
+
+  <copyright>
+    Copyright © 2026 Halo DE Contributors
+    MIT License
+  </copyright>
+
+  <interface name="halo_shell_manager_v1" version="1">
+    <description summary="halo custom shell manager">
+      This interface allows a privileged client (the shell) to communicate
+      with the compositor to request private APIs like locking the screen,
+      displaying OSDs, or managing the dashboard.
+    </description>
+
+    <enum name="error">
+      <entry name="unauthorized" value="0" summary="client is not authorized to use this interface"/>
+    </enum>
+
+    <request name="lock_screen">
+      <description summary="lock the session">
+        Signals the compositor to lock the screen, hide all user windows,
+        and wait for the halo-greeter to unlock it.
+      </description>
+    </request>
+
+    <request name="show_dashboard">
+      <description summary="toggle the dashboard overlay">
+        Instructs the compositor to blur the background and show the 
+        dashboard client on top of everything.
+      </description>
+    </request>
+
+    <event name="compositor_state_changed">
+      <description summary="broadcast state change">
+        Sent by the compositor when workspaces change or windows are moved.
+      </description>
+      <arg name="workspace_id" type="uint"/>
+      <arg name="active_windows" type="uint"/>
+    </event>
+  </interface>
+
+</protocol>
